@@ -76,18 +76,44 @@ class Create_and_set_database():
         except Error as e :
             logging.warning("[MYSQL] message error:  %s", (e))   
 
+def enAttente():
+    reset_logfile("log.txt")
+    setDB = Create_and_set_database()
+    setDB.createTableCours()
+    setDB.createTableSpecialName("Python")
+    setDB.createTableSpecialName("Azure")
 
-reset_logfile("log.txt")
-setDB = Create_and_set_database()
-setDB.createTableCours()
-setDB.createTableSpecialName("Python")
-setDB.createTableSpecialName("Azure")
-
-def testDATAfile():
+def fetchDATAfile(course_name):
+    liste_link = []
+    liste_level = []
+    liste_title = []
+    liste_desc = []
+    liste_tags = []
+    liste_rate = []
     with open('data_course.txt') as json_file:
         data = json.load(json_file)
-        for p in data['python']:
-            print("Python doit montrer des trucs",p)
+        for i in range (0,len(data[course_name])):
+            #pour add le link
+            print(data[course_name][i][1])
+            liste_link.append(data[course_name][i][1])
+            #pour add le niveau
+            print(data[course_name][i][2])
+            liste_level.append(data[course_name][i][2])
+            #pour add le title
+            print(data[course_name][i][3])
+            liste_title.append(data[course_name][i][3])
+            #pour add la description
+            print(data[course_name][i][4])
+            liste_desc.append(data[course_name][i][4])
+            #pour add les tags
+            print(data[course_name][i][5])
+            liste_tags.append(data[course_name][i][5])
+            #pour add le rating
+            print(data[course_name][i][6])
+            liste_rate.append(data[course_name][i][6])
+    print(liste_link)
+
+fetchDATAfile("python")
 
 
 

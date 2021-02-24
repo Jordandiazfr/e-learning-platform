@@ -1,8 +1,8 @@
 {
     "python":
         [
-            [1,"http:blabla","debutant","premier cours python","blablablabalbalblaba","super,top",4],
-            [2,"http:blabla","debutant","premier cours python","blablablabalbalblaba","super,top",4]
+            [1,"http:blabla1","debutant","premier cours python","blablablabalbalblaba","super,top",4],
+            [2,"http:blabla2","intermediaire","premier cours python","blablablabalbalblaba","super,top",4]
         ],        
     "azure":
         [
