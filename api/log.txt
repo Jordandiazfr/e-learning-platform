@@ -1,5 +1,9 @@
-02/24/2021 10:32:21 AM DEBUG new_auth_plugin: caching_sha2_password
-02/24/2021 10:33:36 AM DEBUG new_auth_plugin: caching_sha2_password
-02/24/2021 10:33:54 AM DEBUG new_auth_plugin: caching_sha2_password
-02/24/2021 10:33:54 AM DEBUG new_auth_plugin: caching_sha2_password
-02/24/2021 10:33:54 AM INFO [MYSQL] database  %s has been successfully created 
+02/24/2021 11:28:25 AM DEBUG new_auth_plugin: caching_sha2_password
+02/24/2021 11:28:25 AM INFO [MYSQL] database DB_LEARNING has been successfully created 
+02/24/2021 11:28:25 AM DEBUG new_auth_plugin: caching_sha2_password
+02/24/2021 11:28:25 AM DEBUG new_auth_plugin: caching_sha2_password
+02/24/2021 11:28:25 AM INFO [MYSQL] table 'cours' has been successfully created 
+02/24/2021 11:28:25 AM DEBUG new_auth_plugin: caching_sha2_password
+02/24/2021 11:28:25 AM INFO [MYSQL] table  Python has been successfully created 
+02/24/2021 11:28:25 AM DEBUG new_auth_plugin: caching_sha2_password
+02/24/2021 11:28:25 AM INFO [MYSQL] table  Azure has been successfully created 
