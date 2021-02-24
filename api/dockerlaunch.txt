@@ -1,0 +1,11 @@
+~docker run -itd --name dbserver -e MYSQL_ROOT_PASSWORD=123 mysql
+~docker exec -it dbserver mysql -uroot -p123
+
+~docker run -itd --name datascript -v `pwd`:/e_learning -w /e_learning python
+~docker exec -it datascript bash
+pip install mysql-connector-python
+
+Création de la connection entre les 2 dockers:
+~docker network create -d bridge database_network
+~docker network connect database_network dbserver
+~docker network connect database_network datascript
