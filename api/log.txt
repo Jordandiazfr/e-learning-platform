@@ -1,0 +1,5 @@
+02/24/2021 10:32:21 AM DEBUG new_auth_plugin: caching_sha2_password
+02/24/2021 10:33:36 AM DEBUG new_auth_plugin: caching_sha2_password
+02/24/2021 10:33:54 AM DEBUG new_auth_plugin: caching_sha2_password
+02/24/2021 10:33:54 AM DEBUG new_auth_plugin: caching_sha2_password
+02/24/2021 10:33:54 AM INFO [MYSQL] database  %s has been successfully created 
