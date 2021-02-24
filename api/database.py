@@ -1,4 +1,5 @@
 import logging
+import json
 import mysql.connector
 from mysql.connector import Error
 
@@ -75,10 +76,19 @@ class Create_and_set_database():
         except Error as e :
             logging.warning("[MYSQL] message error:  %s", (e))   
 
+
 reset_logfile("log.txt")
 setDB = Create_and_set_database()
 setDB.createTableCours()
 setDB.createTableSpecialName("Python")
 setDB.createTableSpecialName("Azure")
+
+def testDATAfile():
+    with open('data_course.txt') as json_file:
+        data = json.load(json_file)
+        for p in data['python']:
+            print("Python doit montrer des trucs",p)
+
+
 
 
