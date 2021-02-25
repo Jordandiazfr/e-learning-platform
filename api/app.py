@@ -16,16 +16,30 @@ def index():
 
 
 @app.route('/cours/<name>')
-# This will  serve and fetch all cours in  /cours/python  /azure /sre / etc..
+# This will  serve and fetch all cours in /cours/python  /azure /sre / etc..
 def data(name):
     my_data = db.fetchDATAfile(name)
     # Script qui recupere cours
     return json.dumps(my_data)
 
+# Retourne un formulaire
 
-@app.route('/insert')
-def login():
-    return render_template("login.html")
+
+@app.route('/insert-playlist', methods=['GET'])
+def playlist_panel():
+    return render_template("insert-cours.html")
+
+# Recupere l'infor des form et les print, lorsque ils sont gardes dans les variables x, y et apres il redirige
+# ver l'index
+
+
+@app.route('/insert-playlist', methods=['POST'])
+def insert_playlist():
+    x = request.form['c_name']
+    y = request.form['c_code']
+    print(x)
+    print(y)
+    return index()
 
 
 """if not session.get('logged_in'):
