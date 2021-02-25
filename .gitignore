@@ -1,4 +1,5 @@
-api/__pycache__
+api/__pycache__/
 etc
 logs.txt
 api/log.txt
+__pycache__/
