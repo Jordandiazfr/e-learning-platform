@@ -1,16 +1,31 @@
 from flask import Flask, render_template
 from flask import Flask, flash, redirect, render_template, request, session, abort
 import os
-from dbclass import MySqlDb
+import json
+from database import Create_and_set_database
 
 app = Flask(__name__)
 
-db = MySqlDb("pythonlogin")
+db = Create_and_set_database()
 
 
 @app.route('/')
 def index():
+    # Script qui recupere cours
     return render_template("main.html")
+
+
+@app.route('/cours/<name>')
+# This will  serve and fetch all cours in  /cours/python  /azure /sre / etc..
+def data(name):
+    my_data = db.fetchDATAfile(name)
+    # Script qui recupere cours
+    return json.dumps(my_data)
+
+
+@app.route('/insert')
+def login():
+    return render_template("login.html")
 
 
 """if not session.get('logged_in'):
