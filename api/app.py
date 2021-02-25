@@ -10,7 +10,6 @@ db = Create_and_set_database()
 
 
 def make_list(data):
-    id_youtube = data[0]["link"].split("=")[1]
     list_links = [data[i]["link"].split("=")[1] for i in range(len(data))]
     return list_links
 
@@ -30,10 +29,12 @@ def index():
 
 @app.route('/cours/<name>')
 # This will  serve and fetch all cours in /cours/python  /azure /sre / etc..
-def data(name):
-    my_data = db.fetchDATAfile(name)
+def view_individual_cours(name):
+    data_cours = db.select(name.upper())
+    video_links = make_list(data_cours)
+    print(video_links)
     # Script qui recupere cours
-    return json.dumps(my_data)
+    return render_template("cours.html", data=video_links)
 
 # Retourne un formulaire
 
@@ -55,19 +56,10 @@ def insert_playlist():
     return index()
 
 
-"""if not session.get('logged_in'):
-        return render_template('login.html')
-    else: """
+@app.errorhandler(Exception)
+def server_error(err):
+    return render_template('notfound.html'), 500
 
-
-""" @app.route('/login', methods=['POST'])
-def do_admin_login():
-    if request.form['password'] == 'password' and request.form['username'] == 'admin':
-        session['logged_in'] = True
-    else:
-        flash('wrong password!')
-    return index()
- """
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

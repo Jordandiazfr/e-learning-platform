@@ -1,5 +1,5 @@
 api/__pycache__/
-etc
-logs.txt
+api/etc
+log.txt
 api/log.txt
 __pycache__/
