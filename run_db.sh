@@ -7,7 +7,7 @@ DBSERVER_ID=`docker ps | grep dbserver | cut -f1 -d" "`
 if [ -z "${DBSERVER_ID}" ]; then
   echo "DB SERVER IS DOWN: STARTING UP"
   docker rm dbserver
-  docker run --name dbserver -e MYSQL_ROOT_PASSWORD="1234" -e MYSQL_DATABASE=testpy -e MYSQL_USER=testpy -e MYSQL_PASSWORD=testpypassword -d mysql:8.0.23
+  docker run --name dbserver -e MYSQL_ROOT_PASSWORD=123 -e MYSQL_DATABASE=DB_LEARNING -e MYSQL_USER=jojo -e MYSQL_PASSWORD=3892688 -d mysql:8.0.23
   sleep 30
 fi
 DBSERVER_ID=`docker ps | grep dbserver | cut -f1 -d" "`
