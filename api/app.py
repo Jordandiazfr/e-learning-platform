@@ -9,10 +9,23 @@ app = Flask(__name__)
 db = Create_and_set_database()
 
 
+def make_list(data):
+    id_youtube = data[0]["link"].split("=")[1]
+    list_links = [data[i]["link"].split("=")[1] for i in range(len(data))]
+    return list_links
+
+
 @app.route('/')
 def index():
+    data_azure = db.select("AZURE")
+    data_sre = db.select("SRE")
+    data_python = db.select("PYTHON")
+    #link_youtube = data_azure[0]["link"]
+    azure_videos = make_list(data_azure) + \
+        make_list(data_sre) + make_list(data_python)
     # Script qui recupere cours
-    return render_template("main.html")
+    # return json.dumps(liste_links)
+    return render_template("main.html", all_videos=azure_videos)
 
 
 @app.route('/cours/<name>')
