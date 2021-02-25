@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/css/login.css" type="text/css" />
-    <title>Document</title>
+    <title>Insert playlist</title>
   </head>
   <body>
-    <form action="/login" method="POST">
+    <form action="/insert-playlist" method="POST">
       <div class="login">
         <div class="login-screen">
           <div class="app-title">
-            <h1>Login</h1>
+            <h1>Nouvel Cours</h1>
           </div>
           <div class="login-form">
             <div class="control-group">
@@ -20,8 +20,8 @@
                 type="text"
                 class="login-field"
                 value=""
-                placeholder="username"
-                name="username"
+                placeholder="Le nom du cours"
+                name="c_name"
               />
               <label class="login-field-icon fui-user" for="login-name"></label>
             </div>
@@ -30,17 +30,18 @@
                 type="password"
                 class="login-field"
                 value=""
-                placeholder="password"
-                name="password"
+                placeholder="code du cours"
+                name="c_code"
               />
               <label class="login-field-icon fui-lock" for="login-pass"></label>
             </div>
             <input
               type="submit"
-              value="Log in"
+              value="New cours "
               class="btn btn-primary btn-large btn-block"
             />
           </div>
+          <p>Pour voir tous les cours disponibles allez vers /cours</p>
         </div>
       </div>
     </form>
