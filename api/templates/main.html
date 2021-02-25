@@ -20,10 +20,15 @@
       </nav>
 
       <main class="content">
-        <img src="../static/img/preview.png" />
-        <img src="../static/img/preview.png" />
-        <img src="../static/img/preview.png" />
-        <img src="../static/img/preview.png" />
+        {% block content %} {% for link in all_videos %}
+        <iframe
+          src="https://www.youtube.com/embed/{{ link }}"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in- 
+        picture"
+          allowfullscreen
+        ></iframe>
+        {% endfor %} {% endblock %}
       </main>
 
       <footer>Copyright 2020</footer>

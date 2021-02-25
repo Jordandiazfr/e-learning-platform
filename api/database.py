@@ -122,6 +122,15 @@ class Create_and_set_database():
         sql_query.executemany(insert, value)
         self.conn.commit()
 
+    def select(self, table):
+        c = self.conn.cursor(dictionary=True)
+        c.execute("SELECT * FROM {}".format(table))
+        # Store + print the fetched data
+        result = c.fetchall()
+        # Remember to save + close
+        self.conn.commit()
+        return result
+
 
 def main():
     reset_logfile("log.txt")
