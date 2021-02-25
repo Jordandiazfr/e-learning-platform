@@ -1,0 +1,20 @@
+{
+    "python":
+        [
+            [1,"https://www.youtube.com/watch?v=_uQrJ0TkZlc","debutant","Python tutorial #1","Beginners course for python","super,top",5],
+            [2,"https://www.youtube.com/watch?v=HGOBQPFzWKo","intermediaire","Python tutorial #2","Intermediate course for python","super,top",4.5],
+            [3,"https://www.youtube.com/watch?v=HGOBQPFzWKo","avance","Python tutorial #3","Advanced course for python","super,top",5]
+        ],        
+    "azure":
+        [
+            [1,"https://www.youtube.com/watch?v=bkExFBT_YMU","debutant","What is MS Azure ","Explanation of how MS works","super,top",4],
+            [2,"https://www.youtube.com/watch?v=NKEFWyqJ5XA","debutant","Azure 900 Fundamentals course","training session for certfication AZ 900","super,top",4,5],
+            [3,"https://www.youtube.com/watch?v=tDuruX7XSac","intermediate","Course for azure","blablablabalbalblaba","super,top",4]
+        ],
+    "sre":
+        [
+            [1,"https://www.youtube.com/watch?v=3c-iBn73dDE","debutant","Beginners course for docker","blablablabalbalblaba","super,top",5],
+            [1,"https://www.youtube.com/watch?v=X48VuDVv0do","debutant","Beginners course for kubernetes","blablablabalbalblaba","super,top",5],
+            [1,"https://www.youtube.com/watch?v=9pZ2xmsSDdo","debutant","How to be devOPS engineer","blablablabalbalblaba","super,top",5]
+        ]
+}
