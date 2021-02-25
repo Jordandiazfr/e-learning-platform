@@ -34,7 +34,7 @@ def view_individual_cours(name):
     video_links = make_list(data_cours)
     print(video_links)
     # Script qui recupere cours
-    return render_template("cours.html", data=video_links)
+    return render_template("cours.html", data=video_links, name=name)
 
 # Retourne un formulaire
 
