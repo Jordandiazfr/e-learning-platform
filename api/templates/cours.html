@@ -11,7 +11,7 @@
     <div class="container">
       <nav class="navbar">
         <ul>
-          <li><h1>COMPUTER FLUENT</h1></li>
+          <li><img src="../static/img/logo.png" class="logo" /></li>
           <li><input type="text" placeholder="Tu veux apprendre quoi?" /></li>
           <li><button class="button-bar">Search</button></li>
           <li><button class="button-bar">login</button></li>
@@ -20,19 +20,35 @@
       </nav>
 
       <main class="content">
-        <div class="info"><h2>Cours de {{name}}</h2></div>
-        {% block content %} {% for link in data %}
-        <iframe
-          src="https://www.youtube.com/embed/{{ link }}"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in- 
-        picture"
-          allowfullscreen
-        ></iframe>
-        {% endfor %} {% endblock %}
+        <div class="title">
+          <h1>
+            Cours de Python
+            <!-- {{name}}-->
+          </h1>
+        </div>
+        <div class="content-box">
+          <aside class="info">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ducimus
+            earum assumenda fugit deserunt cumque velit vitae repellendus in,
+            repudiandae doloremque nisi ratione similique tempore quaerat vel
+            recusandae, aspernatur eveniet!
+          </aside>
+          <aside class="video">
+            <!--  {% block content %} {% for link in data %} -->
+
+            <iframe
+              src="https://www.youtube.com/embed/{{ link }}"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in- 
+      picture"
+              allowfullscreen
+            ></iframe>
+            <!-- {% endfor %} {% endblock %} -->
+          </aside>
+        </div>
       </main>
 
-      <footer>Copyright 2020</footer>
+      <footer>Copyright 1993</footer>
     </div>
   </body>
 </html>
