@@ -19,7 +19,7 @@ def index():
     data_azure = db.select("AZURE")
     data_sre = db.select("SRE")
     data_python = db.select("PYTHON")
-    #link_youtube = data_azure[0]["link"]
+    # link_youtube = data_azure[0]["link"]
     azure_videos = make_list(data_azure) + \
         make_list(data_sre) + make_list(data_python)
     # Script qui recupere cours
@@ -43,22 +43,34 @@ def view_individual_cours(name):
 def playlist_panel():
     return render_template("insert-cours.html")
 
-# Recupere l'infor des form et les print, lorsque ils sont gardes dans les variables x, y et apres il redirige
-# ver l'index
+# Route pour ajouter des videos a la base de données
 
 
-@app.route('/insert-playlist', methods=['POST'])
+@app.route('/insert', methods=['GET'])
+def layout():
+    # hard coded ---> on doit reprendre ça en dynamique
+    cours = ['AZURE', 'SRE', 'PYTHON']
+    return render_template("insert-video.html", cours=cours)
+
+
+@app.route('/insert-video', methods=['POST', 'GET'])
 def insert_playlist():
-    x = request.form['c_name']
-    y = request.form['c_code']
-    print(x)
-    print(y)
-    return index()
+    nom_cours = request.form['cours']
+    link_cours = request.form['link']
+    level = request.form['niveau']
+    title = request.form['title']
+    description = request.form['descrip']
+    tags = request.form['tags']
+    # Le rate ou ponctuation d'un video commence a zero
+    rate = "0"
+    new_video_info = [link_cours, level, title, description, tags, rate]
+    return json.dumps(new_video_info)
 
+    db.add_new_video(nom_cours, new_video_info)
 
-@app.errorhandler(Exception)
-def server_error(err):
-    return render_template('notfound.html'), 500
+# @app.errorhandler(Exception)
+# def server_error(err):
+#    return render_template('notfound.html'), 500
 
 
 if __name__ == "__main__":

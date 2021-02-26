@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en, fr">
+  {% block head %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}Computer Fluent, apprendre a etre fluent en informatique
+      :){% endblock %}
+    </title>
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css" />
+    {% endblock %}
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <ul>
+          <li>
+            <a href="/"><img src="../static/img/logo.png" class="logo" /> </a>
+          </li>
+          <li><input type="text" placeholder="Tu veux apprendre quoi?" /></li>
+          <li><button class="button-bar">Search</button></li>
+          <li><button class="button-bar">login</button></li>
+          <li><button class="button-bar">register</button></li>
+        </ul>
+      </nav>
+
+      <main class="content">{% block content %}{% endblock %}</main>
+      {% block footer %}
+      <footer>Copyright 1993</footer>
+      {% endblock %}
+    </div>
+  </body>
+</html>

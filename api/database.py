@@ -131,6 +131,14 @@ class Create_and_set_database():
         self.conn.commit()
         return result
 
+    # Cette methode va inserer un nouveau video dans la table de cours qui corresponde
+    def add_new_video(self, course_name, course_info):
+        c = self.conn.cursor()
+        query = f"""INSERT INTO {course_name} (link, niveau, titre, description, tags, rate) VALUES (%s, %s, %s, %s, %s, %s);""" % (
+            course_info)
+        c.execute(query)
+        self.conn.commit()
+
 
 def main():
     reset_logfile("log.txt")
