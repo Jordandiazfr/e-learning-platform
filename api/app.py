@@ -13,14 +13,18 @@ def make_list(data):
     list_links = [data[i]["link"].split("=")[1] for i in range(len(data))]
     return list_links
 
+def make_list_from_link(data):
+    list_links = [data[i].split("=")[1] for i in range (len(data))]
+    return list_links
+
 def make_list_title(data):
     id_youtube = data[0]["titre"]
     list_links = [data[i]["titre"] for i in range(len(data))]
     return list_links
 
 
-@app.route('/')
-def index():
+@app.route('/', methods=['GET'])
+def index():   
     data_azure = db.select("AZURE")
     data_sre = db.select("SRE")
     data_python = db.select("PYTHON")
@@ -29,8 +33,30 @@ def index():
     my_titles = make_list_title(data_azure) + make_list_title(data_sre) + make_list_title(data_python)
     # Script qui recupere cours
     # return json.dumps(liste_links)
-    return render_template("main.html", all_videos=azure_videos, all_title=my_titles)
+    my_count=1
+    return render_template("main.html", all_videos=azure_videos, all_title=my_titles, count_test=my_count)
 
+@app.route('/', methods=['POST'])
+def search_bar():
+    my_research = request.form.get('search_bar_item')
+    print("my research :",my_research)
+    link_search = db.select_from_tag(my_research)
+    link_search_clean = []
+    for i in range (len(link_search)):
+        link_search_clean.append(link_search[i]['link'])
+    link_template = list(make_list_from_link(link_search_clean))
+    return render_template("search.html", all_videos=link_template, search_element=my_research)
+
+@app.route('/my_research', methods=['GET'])
+def search_page():
+    return render_template("research.html")
+
+@app.route('/my_research', methods=['POST'])
+def search_function():
+    x = request.form.get('search_name')
+    #x = request.args.get("search_name","")
+    print("blabla", x)
+    return index()
 
 @app.route('/cours/<name>')
 # This will  serve and fetch all cours in /cours/python  /azure /sre / etc..

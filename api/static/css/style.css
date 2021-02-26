@@ -63,13 +63,39 @@ body {
 /* content center */
 .content {
   background-color: var(--tri);
+  text-align: center;
+}
+.content-box {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+}
+.content-form {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
 }
 
-.yt_frame {
-  margin: 15px;
-  margin-left: 15px;
+h1 {
+  font-size: 3rem;
+}
+
+.video {
+  flex: 2 50%;
+}
+.title {
+  display: block;
+  margin-top: 2rem;
+}
+.title {
+  flex: 2;
+}
+
+/* Insert - video layout */
+/* form */
+.insert-form {
+  margin: 2rem;
+  color: black;
+  text-align: center;
 }
 
 .input-insert {
@@ -89,4 +115,3 @@ footer {
   position: relative;
   bottom: 0;
 }
-
