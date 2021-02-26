@@ -1,12 +1,38 @@
-{% extends "layout.html" %} {% block content %} {% for link in all_videos %}
-<iframe
-  src="https://www.youtube.com/embed/{{ link }}"
-  frameborder="0"
-  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen
->
-</iframe>
-{% endfor %}
-<br />
-<a href="/insert"> <button class="insert-btn">Insert video</button></a>
+{% extends "layout.html" %} 
+{% block content %} 
+  {% if count_test == 1 %}
+    <div class="type_course" style="background-color: brown;">Azure
+    {% for i in range (0,3) %}
+      <div class="yt_frame">
+        <iframe src="https://www.youtube.com/embed/{{ all_videos[i] }}" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+        </iframe>
+        <p class="title_video"> {{ all_title[i] }} </p>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="type_course" style="background-color: blueviolet;">Site Reliability Engineering
+  {% for i in range (3,6) %}
+    <div class="yt_frame">
+      <iframe src="https://www.youtube.com/embed/{{ all_videos[i] }}" frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+      <p class="title_video"> {{ all_title[i] }} </p>
+    </div>
+  {% endfor %}
+  </div>
+  <div class="type_course" style="background-color: chartreuse;">Python
+    {% for i in range (6,9) %}
+      <div class="yt_frame">
+        <iframe src="https://www.youtube.com/embed/{{ all_videos[i] }}" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+        <p class="title_video"> {{ all_title[i] }} </p>
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <br />
+  <a href="/insert"> <button class="insert-btn">Insert video</button></a>
 {% endblock %}

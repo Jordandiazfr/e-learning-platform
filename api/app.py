@@ -13,19 +13,39 @@ def make_list(data):
     list_links = [data[i]["link"].split("=")[1] for i in range(len(data))]
     return list_links
 
+def make_list_from_link(data):
+    list_links = [data[i].split("=")[1] for i in range (len(data))]
+    return list_links
 
-@app.route('/')
-def index():
+def make_list_title(data):
+    id_youtube = data[0]["titre"]
+    list_links = [data[i]["titre"] for i in range(len(data))]
+    return list_links
+
+
+@app.route('/', methods=['GET'])
+def index():   
     data_azure = db.select("AZURE")
     data_sre = db.select("SRE")
     data_python = db.select("PYTHON")
-    # link_youtube = data_azure[0]["link"]
-    azure_videos = make_list(data_azure) + \
-        make_list(data_sre) + make_list(data_python)
+    #link_youtube = data_azure[0]["link"]
+    azure_videos = make_list(data_azure) + make_list(data_sre) + make_list(data_python)
+    my_titles = make_list_title(data_azure) + make_list_title(data_sre) + make_list_title(data_python)
     # Script qui recupere cours
     # return json.dumps(liste_links)
-    return render_template("main.html", all_videos=azure_videos)
+    my_count=1
+    return render_template("main.html", all_videos=azure_videos, all_title=my_titles, count_test=my_count)
 
+@app.route('/', methods=['POST'])
+def search_bar():
+    my_research = request.form.get('search_bar_item')
+    print("my research :",my_research)
+    link_search = db.select_from_tag(my_research)
+    link_search_clean = []
+    for i in range (len(link_search)):
+        link_search_clean.append(link_search[i]['link'])
+    link_template = list(make_list_from_link(link_search_clean))
+    return render_template("search.html", all_videos=link_template, search_element=my_research)
 
 @app.route('/cours/<name>')
 # This will  serve and fetch all cours in /cours/python  /azure /sre / etc..
@@ -37,15 +57,11 @@ def view_individual_cours(name):
     return render_template("cours.html", data=video_links, name=name)
 
 # Retourne un formulaire
-
-
 @app.route('/insert-playlist', methods=['GET'])
 def playlist_panel():
     return render_template("insert-cours.html")
 
 # Route pour ajouter des videos a la base de données
-
-
 @app.route('/insert', methods=['GET'])
 def layout():
     # hard coded ---> on doit reprendre ça en dynamique

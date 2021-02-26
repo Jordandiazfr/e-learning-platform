@@ -19,8 +19,11 @@
           <li>
             <a href="/"><img src="../static/img/logo.png" class="logo" /> </a>
           </li>
-          <li><input type="text" placeholder="Tu veux apprendre quoi?" /></li>
-          <li><button class="button-bar">Search</button></li>
+          <form method="post" action="/">
+            <li><input type="text" id="search_bar" name="search_bar_item" placeholder="Votre recherche ici" /><input
+              type="submit"
+              value="search"></li>
+          </form>
           <li><button class="button-bar">login</button></li>
           <li><button class="button-bar">register</button></li>
         </ul>

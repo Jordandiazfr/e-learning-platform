@@ -139,6 +139,25 @@ class Create_and_set_database():
         c.execute(query)
         self.conn.commit()
 
+    def select_from_tag(self,custom_tag):
+        c = self.conn.cursor(dictionary=True)
+        #select * from PYTHON where tags like '%super%';
+        c.execute(f"SELECT link FROM PYTHON WHERE tags like '%{custom_tag}%';")
+        # Store + print the fetched data
+        result = c.fetchall()
+
+        c.execute(f"SELECT link FROM AZURE WHERE tags like '%{custom_tag}%';")
+        # Store + print the fetched data
+        result2 = c.fetchall()
+
+        c.execute(f"SELECT link FROM SRE WHERE tags like '%{custom_tag}%';")
+        # Store + print the fetched data
+        result3 = c.fetchall()
+        # Remember to save + close
+        self.conn.commit()
+        final_result = result + result2 + result3
+        return final_result
+
 
 def main():
     reset_logfile("log.txt")

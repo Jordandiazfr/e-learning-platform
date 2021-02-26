@@ -1,0 +1,12 @@
+{% extends "layout.html" %} 
+{% block content %} 
+        <div class="type_course" style="background-color: rgb(165, 165, 165);">Result search : {{ search_element }}
+        {% for link in all_videos %}
+        <div class="yt_frame">
+            <iframe src="https://www.youtube.com/embed/{{ link }}" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        {% endfor %}
+        </div>
+{% endblock %}
