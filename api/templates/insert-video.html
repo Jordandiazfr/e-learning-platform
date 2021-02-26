@@ -1,0 +1,45 @@
+{% extends "layout.html" %} {% block title %}Insert Video {% endblock %} {%
+block head %} {{ super() }} {% endblock %} {% block content %}
+<div class="content-form">
+  <h1>Insert a new video</h1>
+  <!-- form start -->
+  <form class="insert-form" action="/insert-video" method="POST">
+    <label for="cours"> Dans quel cours tu veux ajouter un video?</label>
+    <!-- Les cours sont obtenus grace a  la list qu'on pase a la route /insert-->
+    <select name="cours" method="GET" action="/">
+      <option value="{{cours[0]}}" selected>{{cours[0]}}</option>
+      {% for cour in cours[1:] %}
+      <option value="{{cour}}">{{cour}}</option>
+      {% endfor %}
+    </select>
+
+    <br />
+    <!-- link (regEx) -->
+    <label for="link">Link to the video</label>
+    <input type="text" name="link" class="input-insert" />
+    <br />
+    <!-- niveau   ( hard coded ) -->
+    <label for="niveau">niveau? </label>
+    <select name="niveau" id="niveau">
+      <option value="Debutant">Debutant</option>
+      <option value="Intermediare">Intermediare</option>
+      <option value="Avancé">Avancé</option>
+    </select>
+    <br />
+    <!-- titre  -->
+    <label for="title">Titre du video</label>
+    <input type="text" name="title" class="input-insert" />
+    <br />
+    <!-- description  -->
+    <label for="descrip">Description </label>
+    <input type="text" name="descrip" class="input-insert" />
+    <br />
+    <!-- tags  -->
+    <label for="tags">Tags</label>
+    <input type="text" name="tags" class="input-insert" />
+    <br />
+    <input type="submit" class="insert-btn" value="New cours" />
+  </form>
+  <!-- form end -->
+</div>
+{% endblock %}

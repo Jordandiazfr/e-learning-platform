@@ -1,37 +1,13 @@
-<!DOCTYPE html>
-<html lang="en, fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Computer Fluent, apprendre a etre fluent en informatique :)</title>
-    <link rel="stylesheet" href="../static/css/style.css" type="text/css" />
-  </head>
-  <body>
-    <div class="container">
-      <nav class="navbar">
-        <ul>
-          <li><h1>COMPUTER FLUENT</h1></li>
-          <li><input type="text" placeholder="Tu veux apprendre quoi?" /></li>
-          <li><button class="button-bar">Search</button></li>
-          <li><button class="button-bar">login</button></li>
-          <li><button class="button-bar">register</button></li>
-        </ul>
-      </nav>
-
-      <main class="content">
-        {% block content %} {% for link in all_videos %}
-        <iframe
-          src="https://www.youtube.com/embed/{{ link }}"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in- 
+{% extends "layout.html" %} {% block content %} {% for link in all_videos %}
+<iframe
+  src="https://www.youtube.com/embed/{{ link }}"
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in- 
         picture"
-          allowfullscreen
-        ></iframe>
-        {% endfor %} {% endblock %}
-      </main>
+  allowfullscreen
+></iframe>
 
-      <footer>Copyright 2020</footer>
-    </div>
-  </body>
-</html>
+{% endfor %}
+<br />
+<a href="/insert"> <button class="insert-btn">Insert video</button></a>
+{% endblock %}
