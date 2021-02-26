@@ -47,17 +47,6 @@ def search_bar():
     link_template = list(make_list_from_link(link_search_clean))
     return render_template("search.html", all_videos=link_template, search_element=my_research)
 
-@app.route('/my_research', methods=['GET'])
-def search_page():
-    return render_template("research.html")
-
-@app.route('/my_research', methods=['POST'])
-def search_function():
-    x = request.form.get('search_name')
-    #x = request.args.get("search_name","")
-    print("blabla", x)
-    return index()
-
 @app.route('/cours/<name>')
 # This will  serve and fetch all cours in /cours/python  /azure /sre / etc..
 def view_individual_cours(name):
@@ -68,15 +57,11 @@ def view_individual_cours(name):
     return render_template("cours.html", data=video_links, name=name)
 
 # Retourne un formulaire
-
-
 @app.route('/insert-playlist', methods=['GET'])
 def playlist_panel():
     return render_template("insert-cours.html")
 
 # Route pour ajouter des videos a la base de données
-
-
 @app.route('/insert', methods=['GET'])
 def layout():
     # hard coded ---> on doit reprendre ça en dynamique

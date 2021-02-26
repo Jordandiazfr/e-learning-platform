@@ -1,30 +1,5 @@
-<!DOCTYPE html>
-<html lang="en, fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Computer Fluent, apprendre a etre fluent en informatique :)</title>
-    <link rel="stylesheet" href="../static/css/style.css?q=17903415570" type="text/css" />
-  </head>
-  <body>
-    <div class="container">
-      <nav class="navbar">
-        <ul>
-          <li><h1>COMPUTER FLUENT</h1></li>
-          <form method="post" action="/">
-          <li><input type="text" id="search_bar" name="search_bar_item" placeholder="Tu veux apprendre quoi?" /><input
-            type="submit"
-            value="search"></li>
-          </form>
-          <li><button class="button-bar">Search</button></li>
-          <li><button class="button-bar">login</button></li>
-          <li><button class="button-bar">register</button></li>
-        </ul>
-      </nav>
-
-      <main class="content">
-          
+{% extends "layout.html" %} 
+{% block content %} 
         <div class="type_course" style="background-color: rgb(165, 165, 165);">Result search : {{ search_element }}
         {% for link in all_videos %}
         <div class="yt_frame">
@@ -34,9 +9,4 @@
         </div>
         {% endfor %}
         </div>
-      </main>
-
-      <footer>Copyright 2020</footer>
-    </div>
-  </body>
-</html>
+{% endblock %}
