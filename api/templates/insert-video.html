@@ -3,6 +3,7 @@ block head %} {{ super() }} {% endblock %} {% block content %}
 <div class="content-form">
   <h1>Insert a new video</h1>
   <!-- form start -->
+
   <form class="insert-form" action="/insert-video" method="POST">
     <label for="cours"> Dans quel cours tu veux ajouter un video?</label>
     <!-- Les cours sont obtenus grace a  la list qu'on pase a la route /insert-->
@@ -42,4 +43,5 @@ block head %} {{ super() }} {% endblock %} {% block content %}
   </form>
   <!-- form end -->
 </div>
+
 {% endblock %}

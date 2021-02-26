@@ -61,8 +61,12 @@ def insert_playlist():
     title = request.form['title']
     description = request.form['descrip']
     tags = request.form['tags']
-    new_video = [nom_cours, link_cours, level, title, description, tags]
-    return json.dumps(new_video)
+    # Le rate ou ponctuation d'un video commence a zero
+    rate = "0"
+    new_video_info = [link_cours, level, title, description, tags, rate]
+    return json.dumps(new_video_info)
+
+    db.add_new_video(nom_cours, new_video_info)
 
 # @app.errorhandler(Exception)
 # def server_error(err):
