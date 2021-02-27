@@ -52,10 +52,11 @@ def search_bar():
     return render_template("search.html", all_videos=link_template, search_element=my_research)
 
 
-@app.route('/cours/<name>')
+@app.route('/c/<name>')
 # This will  serve and fetch all cours in /cours/python  /azure /sre / etc..
 def view_individual_cours(name):
     data_cours = db.select(name.upper())
+    print(data_cours)
     video_links = make_list(data_cours)
     print(video_links)
     # Script qui recupere cours
@@ -92,7 +93,7 @@ def insert_playlist():
     # return json.dumps(new_video_info)
     print(nom_cours)
     print(new_video_info)
-    q = db.add_new_video(nom_cours, new_video_info)
+    db.add_new_video(nom_cours, new_video_info)
     return json.dumps(db.select(nom_cours))
     # return q
 # @app.errorhandler(Exception)

@@ -139,7 +139,8 @@ class Create_and_set_database():
         # Store + print the fetched data
         result = c.fetchall()
         # Remember to save + close
-        self.conn.commit()
+        cnx.commit()
+        cnx.close()
         return result
 
     # Cette methode va inserer un nouveau video dans la table de cours qui corresponde
@@ -170,6 +171,7 @@ class Create_and_set_database():
         result3 = c.fetchall()
         # Remember to save + close
         self.conn.commit()
+
         final_result = result + result2 + result3
         return final_result
 
