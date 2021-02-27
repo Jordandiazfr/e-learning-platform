@@ -1,7 +1,7 @@
 import logging
 import json
 import mysql.connector
-from mysql.connector import Error
+from mysql.connector import Error, errorcode
 
 logging.basicConfig(filename='log.txt', encoding='utf-8', level=logging.DEBUG,
                     format='%(asctime)s %(levelname)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
@@ -20,11 +20,22 @@ class Create_and_set_database():
 
     def __init__(self):
         self.createDB()
-        self.conn = mysql.connector.connect(host='dbserver',
-                                            user='root',
-                                            database='DB_LEARNING',
-                                            password='123',
-                                            )
+        self.conn = self.connect()
+
+    def connect(self):
+        try:
+            cnx = mysql.connector.connect(
+                host='dbserver', user='root', database='DB_LEARNING', password='123')
+            print("Connected")
+            return cnx
+        except mysql.connector.Error as err:
+            if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+                print("Something is wrong with your user name or password")
+            elif err.errno == errorcode.ER_BAD_DB_ERROR:
+                print("Database does not exist")
+            else:
+                print(err.errno)
+        return cnx
 
     def createDB(self):
         self.conn = mysql.connector.connect(host='dbserver',
@@ -118,12 +129,12 @@ class Create_and_set_database():
         sql_query = self.conn.cursor()
         insert = f"INSERT INTO {course_name} (link, niveau, titre, description, tags, rate) VALUES (%s, %s, %s, %s, %s, %s);"
         value = course_info
-
         sql_query.executemany(insert, value)
         self.conn.commit()
 
     def select(self, table):
-        c = self.conn.cursor(dictionary=True)
+        cnx = self.connect()
+        c = cnx.cursor(dictionary=True)
         c.execute("SELECT * FROM {}".format(table))
         # Store + print the fetched data
         result = c.fetchall()
@@ -133,15 +144,19 @@ class Create_and_set_database():
 
     # Cette methode va inserer un nouveau video dans la table de cours qui corresponde
     def add_new_video(self, course_name, course_info):
-        c = self.conn.cursor()
-        query = f"""INSERT INTO {course_name} (link, niveau, titre, description, tags, rate) VALUES (%s, %s, %s, %s, %s, %s);""" % (
-            course_info)
+        cnx = self.connect()
+        c = cnx.cursor()
+        d = course_info
+        query = """INSERT INTO %s (link, niveau, titre, description, tags, rate) VALUES ("%s", "%s", "%s", "%s", "%s", "%s");""" % (
+            course_name, d[0], d[1], d[2], d[3], d[4], d[5])
         c.execute(query)
-        self.conn.commit()
+        cnx.commit()
+        cnx.close()
+        return query
 
-    def select_from_tag(self,custom_tag):
+    def select_from_tag(self, custom_tag):
         c = self.conn.cursor(dictionary=True)
-        #select * from PYTHON where tags like '%super%';
+        # select * from PYTHON where tags like '%super%';
         c.execute(f"SELECT link FROM PYTHON WHERE tags like '%{custom_tag}%';")
         # Store + print the fetched data
         result = c.fetchall()
