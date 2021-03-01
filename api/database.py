@@ -63,7 +63,7 @@ class Create_and_set_database():
             sql_query = self.conn.cursor()
 
             # Création de la table en argument
-            sql_query.execute(f"DROP TABLE IF EXISTS COURS")
+            #sql_query.execute(f"DROP TABLE IF EXISTS COURS")
             sql_query.execute(
                 f"CREATE TABLE IF NOT EXISTS COURS (id_cours INT PRIMARY KEY NOT NULL AUTO_INCREMENT,name_cours VARCHAR(100) NOT NULL, code VARCHAR(100) NOT NULL)")
             logging.info(
@@ -81,7 +81,8 @@ class Create_and_set_database():
             sql_query = self.conn.cursor()
 
             # Création de la table en argument
-            sql_query.execute(f"DROP TABLE IF EXISTS {course_name}")
+            # On annule le drop pour ne pas perdre les données
+            #sql_query.execute(f"DROP TABLE IF EXISTS {course_name}")
             sql_query.execute(f"""CREATE TABLE IF NOT EXISTS {course_name} (id_value INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
              link VARCHAR(100) NOT NULL,
              niveau VARCHAR(100) NOT NULL,
