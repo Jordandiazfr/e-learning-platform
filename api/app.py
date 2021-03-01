@@ -19,7 +19,7 @@ def make_list_from_link(data):
 
 
 def make_list_title(data):
-    #id_youtube = data[0]["titre"]
+    # id_youtube = data[0]["titre"]
     list_links = [data[i]["titre"] for i in range(len(data))]
     return list_links
 
@@ -29,7 +29,7 @@ def index():
     data_azure = db.select("AZURE")
     data_sre = db.select("SRE")
     data_python = db.select("PYTHON")
-    #link_youtube = data_azure[0]["link"]
+    # link_youtube = data_azure[0]["link"]
     azure_videos = make_list(data_azure) + \
         make_list(data_sre) + make_list(data_python)
     my_titles = make_list_title(
@@ -99,6 +99,22 @@ def insert_playlist():
 # @app.errorhandler(Exception)
 # def server_error(err):
 #    return render_template('notfound.html'), 500
+
+
+@app.route('/card')
+def card():
+    data_azure = db.select("AZURE")
+    data_sre = db.select("SRE")
+    data_python = db.select("PYTHON")
+    # link_youtube = data_azure[0]["link"]
+    azure_videos = make_list(data_azure) + \
+        make_list(data_sre) + make_list(data_python)
+    my_titles = make_list_title(
+        data_azure) + make_list_title(data_sre) + make_list_title(data_python)
+    # Script qui recupere cours
+    # return json.dumps(liste_links)
+    my_count = 1
+    return render_template("cours-card.html", all_videos=azure_videos, all_title=my_titles, count_test=my_count)
 
 
 if __name__ == "__main__":

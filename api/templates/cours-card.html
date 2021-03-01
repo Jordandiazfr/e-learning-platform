@@ -1,8 +1,6 @@
-{% extends "layout.html" %} {% block content %} {% if count_test == 1 %} {%
-macro card(n1,n2,name) -%}
+<link rel="stylesheet" href="/static/css/style.css" />
 <div class="type_course">
-  <h2>{{name}}</h2>
-  {% for i in range (n1,n2) %}
+  {% for i in range (0,3) %}
   <div class="card">
     <div class="yt_frame">
       <iframe
@@ -17,6 +15,3 @@ macro card(n1,n2,name) -%}
   </div>
   {% endfor %}
 </div>
-{%- endmacro %} {# CARD AZURE #} {{card(0,3,"Azure")}} {# CARD DOCKER #}
-{{card(3,6,"Devops")}} {# CARD SRE #} {{card(6,9,"Python Engineer")}} {% endif
-%} {% endblock %}

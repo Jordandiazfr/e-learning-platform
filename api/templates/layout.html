@@ -19,19 +19,24 @@
           <li>
             <a href="/"><img src="../static/img/logo.png" class="logo" /> </a>
           </li>
-          <form method="post" action="/">
-            <li><input type="text" id="search_bar" name="search_bar_item" placeholder="Votre recherche ici" /><input
-              type="submit"
-              value="search"></li>
-          </form>
-          <li><button class="button-bar">login</button></li>
-          <li><button class="button-bar">register</button></li>
+         
+            <li> <form method="post" action="/" class="navform">
+              <input
+                type="text"
+                id="search_bar"
+                name="search_bar_item"
+                placeholder="Votre recherche ici"
+              /><input type="submit" value="search" class="button-bar" />
+            </li>      </form>
+            <li><a href="/insert"> <button class="button-bar">New video</button></a></li>
+            <li><button class="button-bar">register</button></li>
+    
         </ul>
       </nav>
 
       <main class="content">{% block content %}{% endblock %}</main>
       {% block footer %}
-      <footer>Copyright 1993</footer>
+      <footer>Copyright 2021 - Computer Fluent</footer>
       {% endblock %}
     </div>
   </body>
