@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+  #nom du docker 1
+  db:
+    container_name: dbserver
+    image: mysql
+    environment: 
+      - MYSQL_ROOT_PASSWORD=123
+      - MYSQL_USER=root
+    networks: 
+      - database_network
+  #nom du docker 2
+  dbcreate:
+    container_name: datascript_api
+    #chemin de destination du dockefile pour la db
+    build: ./api
+    depends_on: 
+      - db   
+    ports:
+      - 5000:5000
+    volumes:
+      - ./api:/e_learning
+    networks:
+      - database_network
+    command: sh -c "./wait-for-it.sh db:3306 --timeout=30 -- python app.py"
+
+networks: 
+  database_network: {}
+
