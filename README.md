@@ -30,17 +30,27 @@ Requires Docker, Docker Compose.
 
 Clone the repo, and cd into it!
 
-Activate the containers
+Activate the containers 
 ```sh
 docker-compose up
 ```
 
-Go  to your flask server 
-
+Go  to your flask server 📡
 ```sh
 http://localhost:5000
 ```
 
+This will give you access to the following routes: 
+
+Fetch your courses by categories
+```
+http://localhost:5000/c/[The name of the theme]
+```
+
+Insert a new video
+```
+http://localhost:5000/insert
+```
 
  # Architecture
  
