@@ -54,8 +54,13 @@ http://localhost:5000/insert
 
  # Architecture
  
-<img src=https://cdn.discordapp.com/attachments/813782185098215424/813782638699216977/unknown.png />
+<img src="https://cdn.discordapp.com/attachments/813782185098215424/813782638699216977/unknown.png" />
 
+## The database 
+<img src="https://media.discordapp.net/attachments/813782185098215424/814446997011562555/unknown.png" />
 
-# FrontEND 
-<img src=https://cdn.discordapp.com/attachments/813782185098215424/816638974558208010/unknown.png />
+# Mock Up Figma 
+<img src="https://cdn.discordapp.com/attachments/813782185098215424/816638974558208010/unknown.png" />
+
+# FrontEnd Final 
+<img src="https://media.discordapp.net/attachments/813782185098215424/816674814370250782/unknown.png?width=819&height=467" />
