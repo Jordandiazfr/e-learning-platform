@@ -2,13 +2,10 @@
 ## _Platform de e-learning in flask_ 🌡⚡
 
 
-
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-
 Computer fluent is a e-learning site where you can upload your own playlist about everything that you want 
 to learn and keep a track in the topics that you want to improve
 
-- Lean what you want, with this video content manager
+- Lean what you want, with this vido content manager
 ## Features
 - Get full and free access to educational content
 - Add your own content 
